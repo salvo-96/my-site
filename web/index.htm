@@ -6,7 +6,7 @@
   background-color: skyblue;
 }
      #intro {
-        background-image: image("images/Sfondo-1.png");
+        background-image: image("images/home_wall.png");
         height: 100%;
 /* Center and scale the image nicely */
   background-position: center;
@@ -23,44 +23,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        
   </head>
-  <body>
-    
-<!-- Image and text -->
-<nav class="navbar">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" href="#" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          My Projects
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="https://github.com/salvo-96/OperatingSystem">Operating Systems</a>
-          <a class="dropdown-item" href="https://github.com/salvo-96/Human-Computer-Interaction">Human-Computer Interaction - HCI</a>
-          <a class="dropdown-item" href="https://github.com/salvo-96/Database">Database</a>
-          <a class="dropdown-item" href="http://localhost:8080/myProject_Site_war_exploded/software_development.jsp">Software Development </a>
-          <a class="dropdown-item" href="https://github.com/salvo-96/DataStructures-Algorithms">Data Structures & Algorithms</a>
+  <body onload="startTime(); getJson()" >
+
+  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script>
+    $(function() {
+      $.ajax({
+        url: 'https://newsapi.org/v2/top-headlines?sources=google-news-it&apiKey=2a53dc90b8cd466e86120f25a9479af7',
+        type: 'GET',
+        dataType: 'html',
+        success: function(data, status, xhr)
+        {
+          $("#json").html(data);
+
+
+        },
+        error: function(xhr, status, error)
+        {
+          $("#json").html("Error: " + status + " " + error);
+        }
+      });
+    });
+  </script>
+  <script>
+    function startTime() {
+      const today = new Date();
+      let h = today.getHours();
+      let m = today.getMinutes();
+      let s = today.getSeconds();
+      let d = today.getDate();
+      let month = today.getMonth();
+      let y = today.getFullYear();
+      m = checkTime(m);
+      s = checkTime(s);
+      document.getElementById('txt').innerHTML =  h + ":" + m + ":" + s + " " + "-" + " " + d + "-" + month + "-" + y;
+      setTimeout(startTime, 1000);
+    }
+
+    function checkTime(i) {
+      if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+      return i;
+    }
+  </script>
+      
+      <nav class="navbar navbar-expand-lg navbar-light bg.*" style="background-color: #1d1d21;" >
+        <a class="navbar-brand" href="#" style="color: white; font-size: 30pt; margin-left: 10px">SC</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#" style="color: white; margin-left: 80px; font-size: 15pt; font-style: oblique">Contacts</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" style="color: white; margin-left: 80px; font-size: 15pt; font-style: oblique">Link</a>
+
+            </li>
+
+            <li>
+            <div class="btn-group">
+                <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"
+                        style ="margin-left: 80px;font-size: 15pt;font-style: oblique">
+                  Projects
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="https://github.com/salvo-96/Human-Computer-Interaction">IUM - Interaction Human Machine</a></li>
+                  <li><a class="dropdown-item" href="https://github.com/salvo-96/Database" >Database</a></li>
+                  <li><a class="dropdown-item" href="https://github.com/salvo-96/OperatingSystem">Operating System</a></li>
+                  <li><a class="dropdown-item" href="https://github.com/salvo-96/OperatingSystem">Data Structure - Algorithms</a></li>
+                  <!--   <li><hr class="dropdown-divider"></li>   Linea divisoria-->
+                  <li><a class="dropdown-item" href="https://github.com/salvo-96/Java-MailApp-ClientServer">Java MailApp ClientServer</a></li>
+                </ul>
+              </div>
+
+            </li>
+            <li><h3 id="txt" style="color: white; margin-left: 800px" align="center" ></h3></li>
+          </ul>
         </div>
-      </li>
-    </ul>
-  </div>
-</nav>
-    
+      </nav>
     
   <!-- Background Images -->
-<div class="wrapper">
-<img src="images/Sfondo-1.png" class="img-fluid" alt="Responsive image">
-</div>
-  <div class="card text-white bg-dark">
-    <div class="card-body">
-      <footer class="p-3 bg-dark text-white" align="center">Salvatore Cavallaro - salvo.cavallaro.net@gmail.com - +39 3482786456</footer>
-    </div>
-  </div>
+
+  <div id="json"></div>
+        <img src="images/Sfondo-1.png"  alt="Responsive image" style="width: 100%;height: 83%">
+
+        <div class="card text-white bg-dark">
+          <footer class="p-4 bg-dark text-white" align="center" style="background-color: #1d1d21;"> Salvatore Cavallaro - salvo.cavallaro.net@gmail.com - +39 3482786456</footer>
+        </div>
+
+
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  
   </body>
 </html>
