@@ -8,6 +8,7 @@ function getJson() {
         var jsonResponse = JSON.parse(req.responseText);
         jsonResponse.getElementById("json").innerHTML = jsonResponse.status;
 
+        document.getElementById("totalResults").innerHTML = jsonResponse;
     };
 
 }
