@@ -27,41 +27,6 @@
   </head>
   <body onload="startTime()" >
 
-  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-  <script>
-
-    $(function () {
-      $.ajax({
-
-
-
-
-      });
-
-    });
-
-
-    $(function() {
-      $.ajax({
-        url: 'https://newsapi.org/v2/top-headlines?sources=google-news-it&apiKey=2a53dc90b8cd466e86120f25a9479af7',
-        type: 'GET',
-        dataType: 'html',
-        success: function(data, status, xhr)
-        {
-          $("#json").html(data);
-          var obj = jQuery.parseJSON(data);
-
-          document.getElementById("totalResults").innerHTML = obj.articles[0].description;
-        },
-        error: function(xhr, status, error)
-        {
-          $("#json").html("Error: " + status + " " + error);
-
-
-        }
-      });
-    });
-  </script>
   <script>
     function startTime() {
       const today = new Date();
