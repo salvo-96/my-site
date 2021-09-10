@@ -29,6 +29,21 @@
 
   <script>
     function startTime() {
+
+      var months = new Array();
+      months[0] = "January";
+      months[1] = "February";
+      months[2] = "March";
+      months[3] = "April";
+      months[4] = "May";
+      months[5] = "June";
+      months[6] = "July";
+      months[7] = "August";
+      months[8] = "September";
+      months[9] = "October";
+      months[10] = "November";
+      months[11] = "December";
+
       const today = new Date();
       let h = today.getHours();
       let m = today.getMinutes();
@@ -38,8 +53,9 @@
       let y = today.getFullYear();
       m = checkTime(m);
       s = checkTime(s);
-      month = checkTime(month);
-      document.getElementById('txt').innerHTML =  h + ":" + m + ":" + s + " " + "-" + " " + d + "-" + month + "-" + y;
+      document.getElementById('time').innerHTML =  h + ":" + m + ":" + s;
+      document.getElementById('date').innerHTML =  d + "-" + months[month] + "-" + y;
+
       setTimeout(startTime, 1000);
     }
 
@@ -50,7 +66,7 @@
   </script>
       
       <nav class="navbar navbar-expand-lg navbar-light bg.*" style="background-color: #1d1d21;" >
-        <a class="navbar-brand" href="#" style="color: white; font-size: 30pt; margin-left: 10px">SC</a>
+        <a class="navbar-brand" href="#" style="color: white; font-size: 30pt; margin-left: 30px">SC</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -82,7 +98,10 @@
               </div>
 
             </li>
-            <li><h3 id="txt" style="color: white; margin-left: 800px" align="center" ></h3></li>
+            <li><h3 id="time" style="color: white; margin-left: 610px" align="center" ></h3></li>
+
+            <li><h3 id="date" style="color: white; margin-left: 70px" align="center" ></h3></li>
+
           </ul>
         </div>
       </nav>
