@@ -73,6 +73,7 @@
       let y = today.getFullYear();
       m = checkTime(m);
       s = checkTime(s);
+      month = checkTime(month);
       document.getElementById('txt').innerHTML =  h + ":" + m + ":" + s + " " + "-" + " " + d + "-" + month + "-" + y;
       setTimeout(startTime, 1000);
     }
